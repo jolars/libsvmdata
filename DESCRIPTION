@@ -12,3 +12,7 @@ Encoding: UTF-8
 LazyData: true
 URL: https://github.com/jolars/libsvmdata
 BugReports: https://github.com/jolars/libsvmdata/issues
+Requires: Matrix
+Imports: e1071
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.0.1
