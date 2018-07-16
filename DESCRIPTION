@@ -1,0 +1,14 @@
+Package: libsvmdata
+Type: Package
+Title: Data Sets from 'LIBSVM', Formatted for R
+Version: 0.1.0
+Authors@R: c(person("Johan", "Larsson", email = "johanlarsson@outlook.com",
+                    role = c("aut", "cre"),
+                    comment = c(ORCID = "0000-0002-4029-5945")))
+Description: A set of data sets from the LIBSVM data set collection, formatted
+    for use in R.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+URL: https://github.com/jolars/libsvmdata
+BugReports: https://github.com/jolars/libsvmdata/issues
