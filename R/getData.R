@@ -21,57 +21,44 @@
 #'                                   NULL)
 #' }
 getData <- function(name,
-                    response = c("binary",
-                                 "multiclass",
-                                 "regression",
-                                 "multilabel",
-                                 "string"),
-                    type = c("all", "train", "test", "validate"),
-                    compression = c(NULL, "bz2"),
+                    type = c("all", "training", "testing", "validating"),
                     scaled = FALSE) {
+  type <- match.arg(type, several.ok = FALSE)
 
-  type <- match.arg(type, several.ok = TRUE)
-  response <- match.arg(response)
+  ind <- name == data_sets$name &
+    type == data_sets$type &
+    scaled == data_sets$scaled
 
-  typeid <- match(type, c("all", "train", "test", "validate"))
+  if (!any(ind))
+    stop("that data set is not supported or does not exist")
 
-  typeext <- c("", ".tr", ".t", ".val")[typeid]
-
-  data <- vector("list", length(typeid))
-  names(data) <- type
+  sub <- data_sets[ind, , drop = FALSE]
+  response <- sub$response
+  filename <- sub$file
 
   uri <- paste("https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets",
                response,
-               name,
+               filename,
                sep = "/")
 
-  for (i in seq_along(data)) {
-    tmp_file <- tempfile()
+  tmp_file <- tempfile()
 
-    uri2 <- paste0(uri, typeext[i])
+  utils::download.file(uri, tmp_file)
 
-    if (isTRUE(scaled))
-      uri2 <- paste0(uri2, "_scale")
-
-    if (!is.null(compression))
-      uri2 <- paste0(uri2, ".", compression)
-
-    utils::download.file(uri2, tmp_file)
-
-    if (is.null(compression)) {
-      tmp_dat <- e1071::read.matrix.csr(tmp_file)
-    } else {
-      tmp_dat <- e1071::read.matrix.csr(bzfile(tmp_file))
-    }
-
-    data[[i]]$x <- methods::as(tmp_dat$x, "dgCMatrix")
-    data[[i]]$y <- tmp_dat$y
-
-    unlink(tmp_file)
+  if (grepl("\\.bz2$", filename)) {
+    tmp_dat <- e1071::read.matrix.csr(bzfile(tmp_file), fac = FALSE)
+  } else if (grepl("\\.tar\\.gz$", filename)) {
+    tmp_dat <- e1071::read.matrix.csr(gzfile(tmp_file), fac = FALSE)
+  } else {
+    tmp_dat <- e1071::read.matrix.csr(tmp_file, fac = FALSE)
   }
 
-  if (length(data) == 1L)
-    data <- data[[1L]]
+  unlink(tmp_file)
 
-  data
+  x <- methods::as(tmp_dat$x, "dgCMatrix")
+  x <- Matrix::Matrix(x)
+
+  y <- tmp_dat$y
+
+  list(x = x, y = y)
 }

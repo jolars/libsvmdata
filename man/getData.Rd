@@ -4,21 +4,20 @@
 \alias{getData}
 \title{Download and Format Data Set from LIBSVM Homepage}
 \usage{
-getData(name, response = c("binary", "multiclass", "regression", "multilabel",
-  "string"), type = c("all", "train", "test", "validate"),
-  compression = c(NULL, "bz2"), scaled = FALSE)
+getData(name, type = c("all", "training", "testing", "validating"),
+  scaled = FALSE)
 }
 \arguments{
 \item{name}{name of dataset}
 
-\item{response}{type of response in data set}
-
 \item{type}{type of data set}
-
-\item{compression}{whether and how the data set is compressed}
 
 \item{scaled}{wheter the dataset was scaled (or more precisely that it
 was named as such on the LIBSVM webpage)}
+
+\item{response}{type of response in data set}
+
+\item{compression}{whether and how the data set is compressed}
 }
 \value{
 If there are several types of datasets (training, test, etc),
