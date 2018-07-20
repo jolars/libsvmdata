@@ -82,6 +82,19 @@ aloi <- data.frame(name = "aloi",
                    type = "all",
                    scaled = c(FALSE, TRUE))
 
+connect_4 <- data.frame(name = "connect-4",
+                        file = c("connect-4"),
+                        type = "all",
+                        scaled = FALSE)
+
+dna <- data.frame(name = "dna",
+                  file = c("dna.scale",
+                           "dna.scale.t",
+                           "dna.scale.tr",
+                           "dna.scale.val"),
+                  type = c("all", "testing", "training", "validating"),
+                  scaled = TRUE)
+
 letter <- data.frame(name = "letter",
                      file = c("letter.scale",
                               "letter.scale.t",
@@ -109,6 +122,14 @@ poker <- data.frame(name = "poker",
                     type = c("training", "testing"),
                     scaled = FALSE)
 
+protein <- data.frame(name = "protein",
+                      file = c("protein.bz2",
+                               "protein.t.bz2",
+                               "protein.tr.bz2",
+                               "protein.val.bz2"),
+                      type = c("all", "testing", "training", "validating"),
+                      scaled = FALSE)
+
 vehicle <- data.frame(name = "vehicle",
                       file = "vehicle.scale",
                       type = "all",
@@ -130,6 +151,14 @@ satimage <- data.frame(name = "satimage",
                        type = c("all", "testing", "training", "validating"),
                        scaled = TRUE)
 
+sector <- data.frame(name = "sector",
+                     file = c("sector/sector.bz2",
+                              "sector/sector.t.bz2",
+                              "sector/sector.scale.bz2",
+                              "sector/sector.t.scale.bz2"),
+                     type = c("training", "testing"),
+                     scaled = c(FALSE, FALSE, TRUE, TRUE))
+
 shuttle <- data.frame(name = "shuttle",
                       file = c("shuttle.scale",
                                "shuttle.scale.t",
@@ -139,13 +168,17 @@ shuttle <- data.frame(name = "shuttle",
                       scaled = TRUE)
 
 multiclass <- rbind(aloi,
+                    connect_4,
+                    dna,
                     letter,
                     mnist,
                     pendigits,
                     poker,
+                    protein,
                     vehicle,
                     vowel,
                     satimage,
+                    sector,
                     shuttle)
 multiclass$response <- "multiclass"
 
