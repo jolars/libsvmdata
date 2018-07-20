@@ -1,9 +1,7 @@
 #' Download and Format Data Set from LIBSVM Homepage
 #'
 #' @param name name of dataset
-#' @param response type of response in data set
 #' @param type type of data set
-#' @param compression whether and how the data set is compressed
 #' @param scaled wheter the dataset was scaled (or more precisely that it
 #'   was named as such on the LIBSVM webpage)
 #'
@@ -15,10 +13,9 @@
 #'
 #' @examples
 #' \dontrun{
-#'   phishing <- libsvmdata::getData("phishing",
-#'                                   "binary",
-#'                                   "all",
-#'                                   NULL)
+#'   satimage <- libsvmdata::getData("satimage",
+#'                                   "training",
+#'                                   scaled = TRUE)
 #' }
 getData <- function(name,
                     type = c("all", "training", "testing", "validating"),

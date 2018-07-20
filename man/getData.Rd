@@ -14,10 +14,6 @@ getData(name, type = c("all", "training", "testing", "validating"),
 
 \item{scaled}{wheter the dataset was scaled (or more precisely that it
 was named as such on the LIBSVM webpage)}
-
-\item{response}{type of response in data set}
-
-\item{compression}{whether and how the data set is compressed}
 }
 \value{
 If there are several types of datasets (training, test, etc),
@@ -30,9 +26,8 @@ Download and Format Data Set from LIBSVM Homepage
 }
 \examples{
 \dontrun{
-  phishing <- libsvmdata::getData("phishing",
-                                  "binary",
-                                  "all",
-                                  NULL)
+  satimage <- libsvmdata::getData("satimage",
+                                  "training",
+                                  scaled = TRUE)
 }
 }
