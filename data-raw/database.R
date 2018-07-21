@@ -111,6 +111,14 @@ mnist <- data.frame(name = "mnist",
                     type = c("training", "testing"),
                     scaled = c(FALSE, FALSE, TRUE, TRUE))
 
+news20 <- data.frame(name = "news20",
+                     file = c("news20.bz2",
+                              "news20.t.bz2",
+                              "news20.scale.bz2",
+                              "news20.t.scale.bz2"),
+                     type = c("training", "testing"),
+                     scaled = c(FALSE, FALSE, TRUE, TRUE))
+
 pendigits <- data.frame(name = "pendigits",
                         file = c("pendigits", "pendigits.t"),
                         type = c("training", "testing"),
@@ -130,18 +138,12 @@ protein <- data.frame(name = "protein",
                       type = c("all", "testing", "training", "validating"),
                       scaled = FALSE)
 
-vehicle <- data.frame(name = "vehicle",
-                      file = "vehicle.scale",
-                      type = "all",
-                      scaled = TRUE)
+rcv1.multiclass <- data.frame(name = "rcv1.multiclass",
+                              file = c("rcv1_train.multiclass.bz2",
+                                       "rcv1_test.multiclass.t.bz2"),
+                              type = c("training", "testing"),
+                              scaled = FALSE)
 
-vowel <- data.frame(name = "vowel",
-                    file = c("vowel",
-                             "vowel.t",
-                             "vowel.scale",
-                             "vowel.scale.t"),
-                    type = c("training", "testing"),
-                    scaled = c(FALSE, FALSE, TRUE, TRUE))
 
 satimage <- data.frame(name = "satimage",
                        file = c("satimage.scale",
@@ -159,6 +161,19 @@ sector <- data.frame(name = "sector",
                      type = c("training", "testing"),
                      scaled = c(FALSE, FALSE, TRUE, TRUE))
 
+segment <- data.frame(name = "segment",
+                      file = "segment.scale",
+                      type = "all",
+                      scaled = TRUE)
+
+Sensorless <- data.frame(name = "Sensorless",
+                         file = c("Sensorless",
+                                  "Sensorless.scale",
+                                  "Sensorless.scale.tr",
+                                  "Sensorless.scale.val"),
+                         type = c("all", "all", "training", "validating"),
+                         scaled = c(FALSE, TRUE, TRUE, TRUE))
+
 shuttle <- data.frame(name = "shuttle",
                       file = c("shuttle.scale",
                                "shuttle.scale.t",
@@ -167,19 +182,78 @@ shuttle <- data.frame(name = "shuttle",
                       type = c("all", "testing", "training", "validating"),
                       scaled = TRUE)
 
+smallNORB <- data.frame(name = "smallNORB",
+                        file = c("smallNORB.bz2",
+                                 "smallNORB.t.bz2"),
+                        type = c("training", "testing"),
+                        scaled = FALSE)
+
+SVHN <- data.frame(name = "SVHN",
+                   file = c("SVHN.bz2",
+                            "SVHN.t.bz2",
+                            "SVHN.extra.bz2",
+                            "SVHN.scale.bz2",
+                            "SVHN.scale.t.bz2",
+                            "SVHN.scale.extra.bz2"),
+                   type = c("training",
+                            "testing",
+                            "extra",
+                            "training",
+                            "testing",
+                            "extra"),
+                   scaled = c(rep(FALSE, 3), rep(TRUE, 3)))
+
+svmguide2 <- data.frame(name = "svmguide2",
+                        file = "svmguide2",
+                        type = "all",
+                        scaled = FALSE)
+
+svmguide4 <- data.frame(name = "svmguide4",
+                        file = c("svmguide4", "svmguide4.t"),
+                        type = c("training", "testing"),
+                        scaled = FALSE)
+
+usps <- data.frame(name = "usps",
+                   file = c("usps.bz2",
+                            "usps.t.bz2"),
+                   type = c("training", "testing"),
+                   scaled = FALSE)
+
+vehicle <- data.frame(name = "vehicle",
+                      file = "vehicle.scale",
+                      type = "all",
+                      scaled = TRUE)
+
+vowel <- data.frame(name = "vowel",
+                    file = c("vowel",
+                             "vowel.t",
+                             "vowel.scale",
+                             "vowel.scale.t"),
+                    type = c("training", "testing"),
+                    scaled = c(FALSE, FALSE, TRUE, TRUE))
+
 multiclass <- rbind(aloi,
                     connect_4,
                     dna,
                     letter,
                     mnist,
+                    news20,
                     pendigits,
                     poker,
                     protein,
-                    vehicle,
-                    vowel,
+                    rcv1.multiclass,
                     satimage,
                     sector,
-                    shuttle)
+                    segment,
+                    Sensorless,
+                    smallNORB,
+                    SVHN,
+                    svmguide2,
+                    svmguide4,
+                    usps,
+                    shuttle,
+                    vehicle,
+                    vowel)
 multiclass$response <- "multiclass"
 
 
